@@ -1,0 +1,17 @@
+# Build outputs
+Practica_Final/target/
+Practica_Final/out/
+
+# IDE metadata
+Practica_Final/.idea/
+Practica_Final/*.iml
+Practica_Final/.classpath
+Practica_Final/.project
+
+# Runtime saves and local files
+Practica_Final/guardado-partida.json
+*.log
+
+# OS metadata
+Thumbs.db
+.DS_Store

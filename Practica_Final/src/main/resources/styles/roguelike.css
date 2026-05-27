@@ -1,0 +1,822 @@
+/* === La Conquista - Dark Fantasy Theme === */
+
+.root {
+    -fx-background-color:
+        radial-gradient(center 50% 0%, radius 80%, #273257 0%, #161b2e 42%, #080b12 100%);
+    -fx-font-family: "Segoe UI", "Consolas", sans-serif;
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 13px;
+}
+
+/* Game title */
+.game-title {
+    -fx-text-fill: linear-gradient(to bottom, #fff4a8, #e0a832, #8e5b16);
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Georgia", "Times New Roman", serif;
+    -fx-padding: 6 0 0 8;
+    -fx-effect: dropshadow(gaussian, #000000, 12, 0.5, 2, 3);
+}
+.game-subtitle {
+    -fx-text-fill: #9aa3c0;
+    -fx-font-size: 11px;
+    -fx-font-family: "Consolas", monospace;
+    -fx-padding: 0 0 4 8;
+}
+
+.objective-label {
+    -fx-text-fill: #fff0b8;
+    -fx-background-color: linear-gradient(to right, #3a220c, #1b2438, transparent);
+    -fx-border-color: #7a561e;
+    -fx-border-width: 0 0 0 3;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Consolas";
+    -fx-padding: 5 8 5 8;
+    -fx-effect: dropshadow(gaussian, #00000077, 6, 0.25, 0, 2);
+}
+
+.near-actions-label {
+    -fx-text-fill: #b9e8ff;
+    -fx-background-color: linear-gradient(to right, #0e263a, #101827, transparent);
+    -fx-border-color: #2f86b8;
+    -fx-border-width: 0 0 0 3;
+    -fx-font-size: 11px;
+    -fx-font-family: "Consolas";
+    -fx-padding: 4 8 5 8;
+}
+
+.map-panel {
+    -fx-background-color: transparent;
+}
+
+.map-title {
+    -fx-text-fill: #f6d56f;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Georgia", "Times New Roman", serif;
+    -fx-padding: 0 0 0 2;
+    -fx-effect: dropshadow(gaussian, #000000, 8, 0.55, 1, 2);
+}
+
+.map-grid {
+    -fx-background-color:
+        linear-gradient(to bottom, #080b10, #101623),
+        radial-gradient(center 50% 50%, radius 95%, #22304a 0%, #0a0d14 70%);
+    -fx-background-insets: 0, 4;
+    -fx-padding: 10;
+    -fx-border-color: #3b2a13, #856126, #17100a;
+    -fx-border-width: 3, 1, 1;
+    -fx-border-insets: 0, 4, 7;
+    -fx-border-radius: 12, 8, 5;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, #000000aa, 20, 0.35, 0, 8);
+}
+
+.map-grid.room-theme-cell {
+    -fx-background-color:
+        linear-gradient(to bottom, #080b10, #101623),
+        radial-gradient(center 50% 45%, radius 95%, #26334b 0%, #111827 55%, #07090f 100%);
+}
+
+.map-grid.room-theme-corridor {
+    -fx-background-color:
+        linear-gradient(to bottom, #090b0f, #12131b),
+        radial-gradient(center 50% 50%, radius 80%, #303034 0%, #171720 48%, #050509 100%);
+}
+
+.map-grid.room-theme-library {
+    -fx-background-color:
+        linear-gradient(to bottom, #100b08, #17110c),
+        radial-gradient(center 48% 45%, radius 95%, #3a2715 0%, #17110c 52%, #060403 100%);
+}
+
+.map-grid.room-theme-dark {
+    -fx-background-color:
+        linear-gradient(to bottom, #050712, #0b1020),
+        radial-gradient(center 50% 50%, radius 90%, #1b2141 0%, #090d1b 50%, #020309 100%);
+}
+
+.map-grid.room-theme-spikes {
+    -fx-background-color:
+        linear-gradient(to bottom, #100d0a, #17120c),
+        radial-gradient(center 50% 52%, radius 90%, #3b2613 0%, #1b120a 55%, #050302 100%);
+}
+
+.map-grid.room-theme-red,
+.map-grid.room-theme-boss {
+    -fx-background-color:
+        linear-gradient(to bottom, #130607, #190b10),
+        radial-gradient(center 50% 48%, radius 95%, #4a1118 0%, #1a0b12 50%, #050205 100%);
+}
+
+.tile {
+    -fx-background-radius: 9;
+    -fx-border-radius: 9;
+    -fx-border-width: 1;
+    -fx-effect: innershadow(gaussian, #00000088, 10, 0.35, 0, 1);
+}
+
+.tile-floor {
+    -fx-background-color:
+        radial-gradient(center 30% 25%, radius 70%, #8a7a68 0%, #625648 38%, #2a2218 100%);
+    -fx-border-color: #4a3e30 #3a3024 #3a3024 #4a3e30;
+}
+
+.tile-wall {
+    -fx-background-color:
+        linear-gradient(to bottom, #303442 0%, #1a1c28 45%, #080a10 100%);
+    -fx-border-color: #080a10 #030408 #030408 #1e2030;
+    -fx-effect: dropshadow(gaussian, #000000cc, 8, 0.35, 2, 3);
+}
+
+.tile-shadow {
+    -fx-background-color:
+        radial-gradient(center 45% 35%, radius 78%, #1a1b29 0%, #090a13 45%, #020204 100%),
+        linear-gradient(from 0% 0% to 100% 100%, #2e314420 0%, transparent 30%, #00000077 100%);
+    -fx-border-color: #111320 #05060b #020205 #0c0d17;
+    -fx-effect: innershadow(gaussian, #000000ee, 18, 0.5, 0, 0), dropshadow(gaussian, #000000aa, 6, 0.3, 1, 2);
+}
+
+.tile-player {
+    -fx-background-color:
+        radial-gradient(center 50% 45%, radius 70%, #7ad4ff 0%, #2278d4 40%, #071d44 100%),
+        linear-gradient(from 0% 0% to 100% 100%, transparent 0%, #ffffff20 48%, transparent 52%);
+    -fx-border-color: #d4f3ff #4dbfff #0e4b89 #4dbfff;
+    -fx-effect: dropshadow(gaussian, #49c7ffdd, 20, 0.55, 0, 0), innershadow(gaussian, #ffffff88, 12, 0.3, 0, 0);
+}
+
+.tile-enemy {
+    -fx-background-color:
+        radial-gradient(center 50% 38%, radius 70%, #ff6b6b 0%, #b01a28 45%, #270409 100%),
+        linear-gradient(from 0% 0% to 100% 100%, transparent 0%, #ffffff12 48%, transparent 52%);
+    -fx-border-color: #ffb0b0 #e94560 #5d0811 #e94560;
+    -fx-effect: dropshadow(gaussian, #e94560cc, 18, 0.5, 0, 0), innershadow(gaussian, #000000cc, 10, 0.3, 0, 1);
+}
+
+.tile-item {
+    -fx-background-color:
+        radial-gradient(center 50% 40%, radius 80%, #fff4b8 0%, #d49b2b 42%, #3b2204 100%),
+        linear-gradient(from 0% 0% to 100% 100%, transparent 0%, #ffffff20 48%, transparent 52%);
+    -fx-border-color: #fff4a8 #e0a832 #7f4e11 #e0a832;
+    -fx-effect: dropshadow(gaussian, #ffd36acc, 16, 0.5, 0, 0), innershadow(gaussian, #ffffff55, 8, 0.2, 0, 0);
+}
+
+.tile-key {
+    -fx-background-color:
+        radial-gradient(center 50% 40%, radius 80%, #ffffcc 0%, #e0a820 42%, #3d2604 100%),
+        linear-gradient(from 0% 0% to 100% 100%, transparent 0%, #ffffff20 48%, transparent 52%);
+    -fx-border-color: #ffffff #ffd451 #8a5a08 #ffd451;
+    -fx-effect: dropshadow(gaussian, #ffe27add, 24, 0.6, 0, 0), innershadow(gaussian, #ffffff88, 10, 0.3, 0, 0);
+}
+
+.tile-trap {
+    -fx-background-color:
+        radial-gradient(center 50% 40%, radius 70%, #ffb15f 0%, #a44916 42%, #2a0c04 100%),
+        linear-gradient(from 0% 0% to 100% 100%, transparent 0%, #00000030 48%, transparent 52%);
+    -fx-border-color: #ffd29a #ff8845 #6b1d06 #ff8845;
+    -fx-effect: dropshadow(gaussian, #ff6b2acc, 14, 0.45, 0, 0), innershadow(gaussian, #000000aa, 10, 0.35, 0, 1);
+}
+
+.tile-door {
+    -fx-background-color:
+        linear-gradient(to right, #3a1a08 0%, #7a4a1e 15%, #2a1006 20%, #8b5a28 50%, #2a1006 80%, #7a4a1e 85%, #3a1a08 100%),
+        linear-gradient(from 0% 0% to 100% 100%, transparent 0%, #ffffff12 48%, transparent 52%);
+    -fx-border-color: #d0a05c #7a4c20 #211006 #7a4c20;
+    -fx-effect: dropshadow(gaussian, #000000dd, 12, 0.45, 2, 4), innershadow(gaussian, #d0a05c44, 8, 0.2, -1, -1);
+}
+
+.tile-exit {
+    -fx-background-color:
+        radial-gradient(center 50% 50%, radius 80%, #ffffff 0%, #ffe75a 20%, #56c98e 50%, #072916 100%);
+    -fx-border-color: #ffffff #ffe75a #42c77a #ffe75a;
+    -fx-effect: dropshadow(gaussian, #fff4a8ee, 26, 0.6, 0, 0), innershadow(gaussian, #ffffffaa, 14, 0.35, 0, 0);
+}
+
+.tile-path-base {
+    -fx-background-color:
+        radial-gradient(center 50% 50%, radius 80%, #d9b5ff 0%, #6b3fb4 45%, #140b24 100%);
+    -fx-border-color: #e7d0ff #a875ff #3b1b66 #a875ff;
+    -fx-effect: dropshadow(gaussian, #a875ffbb, 16, 0.45, 0, 0);
+}
+
+.tile-reachable {
+    -fx-border-color: #9cffba #52d67d #1c7a3a #52d67d;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, #52d67dcc, 14, 0.45, 0, 0), innershadow(gaussian, #52d67d66, 10, 0.32, 0, 0);
+}
+
+.tile-path {
+    -fx-border-color: #f0d7ff #b071ff #5a238a #b071ff;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, #b071ffcc, 18, 0.5, 0, 0), innershadow(gaussian, #ffffff55, 8, 0.25, 0, 0);
+}
+
+.tile-clickable {
+    -fx-cursor: hand;
+}
+
+.tile-clickable:hover {
+    -fx-scale-x: 1.04;
+    -fx-scale-y: 1.04;
+    -fx-effect: dropshadow(gaussian, #caffd7ee, 22, 0.55, 0, 0), innershadow(gaussian, #ffffff77, 10, 0.25, 0, 0);
+}
+
+.reachable-marker {
+    -fx-fill: radial-gradient(center 50% 50%, radius 70%, #eafff0 0%, #71f09b 45%, #1c7a3a 100%);
+    -fx-stroke: #d8ffe0;
+    -fx-stroke-width: 1.5;
+    -fx-effect: dropshadow(gaussian, #52d67dee, 10, 0.5, 0, 0);
+}
+
+.path-marker {
+    -fx-background-color: #180a26cc;
+    -fx-background-radius: 0 0 5 5;
+    -fx-text-fill: #ead4ff;
+    -fx-font-size: 7px;
+    -fx-font-family: "Consolas";
+    -fx-font-weight: bold;
+    -fx-padding: 1 5 1 5;
+    -fx-effect: dropshadow(gaussian, #b071ffdd, 9, 0.45, 0, 0);
+}
+
+.fog-texture {
+    -fx-fill: radial-gradient(center 45% 35%, radius 75%, #2d304222 0%, #08091488 52%, #00000000 100%);
+    -fx-stroke: #20233555;
+    -fx-stroke-width: 1;
+    -fx-effect: innershadow(gaussian, #000000dd, 16, 0.45, 0, 0);
+}
+
+.attack-sword {
+    -fx-effect: dropshadow(gaussian, #ffffffdd, 10, 0.45, 0, 0), dropshadow(gaussian, #ffdf6add, 18, 0.35, 0, 0);
+}
+
+.enemy-claw {
+    -fx-effect: dropshadow(gaussian, #ff5f6fcc, 12, 0.5, 0, 0), dropshadow(gaussian, #000000aa, 8, 0.3, 0, 2);
+}
+
+.player-projectile {
+    -fx-fill: radial-gradient(center 45% 40%, radius 70%, #ffffff 0%, #8ee8ff 35%, #1f75ff 72%, #061a52 100%);
+    -fx-stroke: #d9f7ff;
+    -fx-stroke-width: 1.5;
+    -fx-effect: dropshadow(gaussian, #68d8ffee, 18, 0.6, 0, 0);
+}
+
+.enemy-projectile {
+    -fx-fill: radial-gradient(center 45% 40%, radius 70%, #ffd9ef 0%, #b071ff 35%, #6324aa 72%, #19051f 100%);
+    -fx-stroke: #f1d2ff;
+    -fx-stroke-width: 1.5;
+    -fx-effect: dropshadow(gaussian, #b071ffee, 20, 0.62, 0, 0);
+}
+
+.player-projectile-trail {
+    -fx-fill: linear-gradient(to right, #68d8ff00, #68d8ffaa, #ffffffdd);
+    -fx-arc-width: 8;
+    -fx-arc-height: 8;
+}
+
+.enemy-projectile-trail {
+    -fx-fill: linear-gradient(to right, #b071ff00, #b071ffaa, #ffd9efdd);
+    -fx-arc-width: 8;
+    -fx-arc-height: 8;
+}
+
+.impact-player {
+    -fx-fill: radial-gradient(center 50% 50%, radius 75%, #ffffffcc 0%, #ffd36aaa 36%, #ff6b2a55 65%, #00000000 100%);
+    -fx-stroke: #fff0b8;
+    -fx-stroke-width: 2;
+    -fx-effect: dropshadow(gaussian, #ffd36add, 18, 0.55, 0, 0);
+}
+
+.impact-enemy {
+    -fx-fill: radial-gradient(center 50% 50%, radius 75%, #ffe5ffcc 0%, #b071ffaa 36%, #e9456055 65%, #00000000 100%);
+    -fx-stroke: #ffd9ef;
+    -fx-stroke-width: 2;
+    -fx-effect: dropshadow(gaussian, #b071ffdd, 18, 0.55, 0, 0);
+}
+
+.tile-icon {
+    -fx-font-family: "Georgia", "Segoe UI Symbol", "Consolas";
+    -fx-font-size: 21px;
+    -fx-font-weight: bold;
+}
+
+.player-badge {
+    -fx-background-color: #061d44cc;
+    -fx-text-fill: #bcefff;
+    -fx-font-family: "Consolas";
+    -fx-font-size: 7px;
+    -fx-font-weight: bold;
+    -fx-padding: 1 4;
+    -fx-background-radius: 4 4 0 0;
+}
+
+.enemy-hp-badge {
+    -fx-background-color: #08090dcc;
+    -fx-text-fill: #ffb8b8;
+    -fx-font-family: "Consolas";
+    -fx-font-size: 8px;
+    -fx-font-weight: bold;
+    -fx-padding: 1 4;
+    -fx-background-radius: 4;
+}
+
+.attack-slash {
+    -fx-text-fill: linear-gradient(to bottom, #ffffff, #ffd36a, #e94560);
+    -fx-font-family: "Georgia", serif;
+    -fx-font-size: 42px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, #ff4f4fcc, 14, 0.5, 0, 0);
+}
+
+.damage-flash {
+    -fx-fill: radial-gradient(center 50% 50%, radius 80%, #ffdfdfaa 0%, #e9456066 42%, #5a080800 100%);
+    -fx-stroke: #ff8080cc;
+    -fx-stroke-width: 2;
+    -fx-effect: dropshadow(gaussian, #e94560bb, 16, 0.5, 0, 0);
+}
+
+.pickup-spark {
+    -fx-background-color: #1b1008cc;
+    -fx-background-radius: 10;
+    -fx-border-color: #ffd36a;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-text-fill: #fff6b8;
+    -fx-font-size: 18px;
+    -fx-font-family: "Georgia", serif;
+    -fx-font-weight: bold;
+    -fx-padding: 0 5 1 5;
+    -fx-effect: dropshadow(gaussian, #ffd36add, 14, 0.55, 0, 0);
+}
+
+.movement-dust {
+    -fx-fill: radial-gradient(center 50% 50%, radius 70%, #c9b18a99 0%, #6e543255 55%, #00000000 100%);
+    -fx-effect: dropshadow(gaussian, #00000066, 5, 0.25, 0, 1);
+}
+
+.legend-tile {
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: #000000aa;
+    -fx-border-width: 1;
+}
+
+.legend-tile.tile-reachable {
+    -fx-background-color: radial-gradient(center 50% 50%, radius 70%, #1a5730 0%, #0d2618 100%);
+    -fx-border-color: #52d67d;
+    -fx-effect: dropshadow(gaussian, #52d67d99, 8, 0.4, 0, 0);
+}
+
+.legend-icon {
+    -fx-text-fill: #f5f0da;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Georgia", "Segoe UI Symbol", "Consolas";
+}
+
+.legend-label {
+    -fx-text-fill: #d6d0c0;
+    -fx-font-size: 10px;
+    -fx-font-family: "Consolas";
+}
+
+.loading-screen {
+    -fx-alignment: center;
+    -fx-background-color:
+        radial-gradient(center 50% 45%, radius 85%, #2a1e12 0%, #101827 45%, #030508 100%);
+    -fx-padding: 40;
+    -fx-effect: innershadow(gaussian, #000000cc, 40, 0.4, 0, 0);
+}
+
+.loading-title {
+    -fx-text-fill: linear-gradient(to bottom, #fff6b8, #d49b2b, #5a3510);
+    -fx-font-size: 58px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Georgia", "Times New Roman", serif;
+    -fx-effect: dropshadow(gaussian, #000000, 18, 0.6, 0, 6);
+}
+
+.loading-subtitle {
+    -fx-text-fill: #e4dcc8;
+    -fx-font-size: 16px;
+    -fx-font-family: "Georgia", serif;
+    -fx-effect: dropshadow(gaussian, #000000, 8, 0.4, 1, 2);
+}
+
+.loading-hint {
+    -fx-text-fill: #9aa3c0;
+    -fx-font-size: 12px;
+    -fx-font-family: "Consolas";
+    -fx-padding: 16 0 0 0;
+}
+
+.main-menu {
+    -fx-background-color:
+        radial-gradient(center 50% 42%, radius 90%, #302012 0%, #171d31 42%, #030508 100%);
+    -fx-padding: 60;
+    -fx-effect: innershadow(gaussian, #000000dd, 60, 0.45, 0, 0);
+}
+
+.menu-title {
+    -fx-text-fill: linear-gradient(to bottom, #fff8c7, #d79b2f, #5b3410);
+    -fx-font-size: 64px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Georgia", "Times New Roman", serif;
+    -fx-effect: dropshadow(gaussian, #000000, 22, 0.65, 0, 7);
+}
+
+.menu-subtitle {
+    -fx-text-fill: #d9cfba;
+    -fx-font-size: 15px;
+    -fx-font-family: "Georgia", serif;
+    -fx-padding: 0 0 18 0;
+    -fx-effect: dropshadow(gaussian, #000000, 8, 0.5, 1, 2);
+}
+
+.menu-button {
+    -fx-background-color:
+        linear-gradient(to bottom, #7a561e 0%, #4a2d10 45%, #1b1008 100%);
+    -fx-text-fill: #fff0c0;
+    -fx-border-color: #f2c36b #8b6424 #2d1b09 #8b6424;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-font-family: "Georgia", "Segoe UI", serif;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 28;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, #000000aa, 12, 0.35, 0, 4);
+}
+
+.menu-button:hover {
+    -fx-background-color:
+        linear-gradient(to bottom, #c28b30 0%, #754817 48%, #251407 100%);
+    -fx-border-color: #fff4a8 #d9a144 #4a2d10 #d9a144;
+    -fx-effect: dropshadow(gaussian, #e0a832aa, 18, 0.45, 0, 0);
+    -fx-translate-y: -1;
+}
+
+.menu-button:pressed {
+    -fx-translate-y: 1;
+    -fx-background-color: linear-gradient(to bottom, #3a220c, #1b1008);
+}
+
+.menu-hint {
+    -fx-text-fill: #9aa3c0;
+    -fx-font-size: 11px;
+    -fx-font-family: "Consolas";
+    -fx-padding: 12 0 0 0;
+}
+
+.rules-dialog {
+    -fx-background-color: #101827;
+    -fx-font-family: "Segoe UI", "Consolas";
+}
+
+.rules-text {
+    -fx-control-inner-background: #090d15;
+    -fx-text-fill: #e6dcc8;
+    -fx-highlight-fill: #7a561e;
+    -fx-highlight-text-fill: #ffffff;
+    -fx-font-family: "Consolas";
+    -fx-font-size: 12px;
+    -fx-border-color: #7a561e;
+    -fx-border-width: 1;
+}
+
+.inventory-scroll {
+    -fx-background: transparent;
+    -fx-background-color: transparent;
+    -fx-border-color: #6b4a1d, #0f3460;
+    -fx-border-width: 1.5, 1;
+    -fx-border-insets: 0, 2;
+    -fx-border-radius: 8, 6;
+    -fx-background-radius: 8;
+}
+
+.inventory-root {
+    -fx-background-color: linear-gradient(to bottom, #1c2544, #101725);
+    -fx-background-radius: 8;
+}
+
+.inventory-subtitle,
+.actions-subtitle {
+    -fx-text-fill: #7f8fb0;
+    -fx-font-size: 9px;
+    -fx-font-family: "Consolas";
+    -fx-font-weight: bold;
+    -fx-padding: 5 0 1 0;
+}
+
+.right-panel {
+    -fx-background-color: linear-gradient(to bottom, #0b0f19, #090b12);
+    -fx-border-color: #20283a;
+    -fx-border-width: 0 0 0 1;
+}
+
+.item-card {
+    -fx-background-radius: 7;
+    -fx-border-radius: 7;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, #00000066, 6, 0.25, 0, 2);
+}
+
+.item-card:hover {
+    -fx-translate-x: 2;
+    -fx-effect: dropshadow(gaussian, #e0a83288, 10, 0.3, 0, 0);
+}
+
+.item-equipped {
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, #ffd36a88, 12, 0.35, 0, 0);
+}
+
+.item-weapon {
+    -fx-background-color: linear-gradient(to right, #3a160f, #60251a, #21100d);
+    -fx-border-color: #ffb86c;
+}
+
+.item-shield {
+    -fx-background-color: linear-gradient(to right, #10233a, #1d466b, #0a1725);
+    -fx-border-color: #6ac9ff;
+}
+
+.item-potion {
+    -fx-background-color: linear-gradient(to right, #123018, #1f6b36, #09180d);
+    -fx-border-color: #74e088;
+}
+
+.item-key {
+    -fx-background-color: linear-gradient(to right, #3a2b0f, #7a5c1e, #191306);
+    -fx-border-color: #ffd36a;
+}
+
+.item-generic {
+    -fx-background-color: linear-gradient(to right, #25243d, #343255, #11111f);
+    -fx-border-color: #bda8ff;
+}
+
+.item-icon {
+    -fx-text-fill: #fff4d2;
+    -fx-font-family: "Segoe UI Symbol", "Georgia", "Consolas";
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-min-width: 28;
+    -fx-alignment: center;
+}
+
+.item-name {
+    -fx-text-fill: #fff3d0;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", "Consolas";
+}
+
+.item-stats {
+    -fx-text-fill: #c9d1e8;
+    -fx-font-size: 9px;
+    -fx-font-family: "Consolas";
+}
+
+.inventory-empty {
+    -fx-text-fill: #9aa3c0;
+    -fx-font-size: 11px;
+    -fx-font-family: "Georgia";
+    -fx-font-style: italic;
+}
+
+/* Section panels */
+.section-panel {
+    -fx-background-color: linear-gradient(to bottom, #1c2544, #121a30);
+    -fx-border-color: #6b4a1d, #0f3460;
+    -fx-border-width: 1.5, 1;
+    -fx-border-insets: 0, 2;
+    -fx-border-radius: 8, 6;
+    -fx-background-radius: 8;
+    -fx-padding: 6;
+    -fx-spacing: 3;
+    -fx-effect: dropshadow(gaussian, #00000088, 10, 0.3, 0, 4);
+}
+
+.section-title {
+    -fx-text-fill: linear-gradient(to bottom, #fff4a8, #d49b2b);
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-font-family: "Consolas", monospace;
+    -fx-padding: 0 0 3 0;
+    -fx-letter-spacing: 1.5;
+    -fx-effect: dropshadow(gaussian, #000000aa, 5, 0.35, 0, 1);
+}
+
+.hero-name {
+    -fx-padding: 1 0 2 0;
+}
+
+.equipment-slot {
+    -fx-border-color: #1e2430;
+    -fx-border-width: 1;
+    -fx-border-radius: 3;
+    -fx-background-radius: 3;
+    -fx-background-color: #0a0d14;
+}
+
+.equipment-slot-title {
+    -fx-text-fill: #556688;
+    -fx-font-size: 8px;
+    -fx-font-family: "Consolas";
+    -fx-letter-spacing: 1;
+}
+
+.equipment-slot-value {
+    -fx-font-size: 10px;
+    -fx-font-family: "Consolas";
+}
+
+/* ScrollPane – dark */
+.scroll-pane {
+    -fx-background: #0d1117;
+    -fx-background-color: #0d1117;
+    -fx-border-color: #0f3460;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+.scroll-pane > .viewport {
+    -fx-background-color: #0d1117;
+}
+.scroll-bar {
+    -fx-background-color: #16213e;
+    -fx-background-radius: 0;
+}
+.scroll-bar .thumb {
+    -fx-background-color: #0f3460;
+    -fx-background-radius: 3;
+}
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: #16213e;
+}
+
+/* Buttons – dark with hover glow */
+.button {
+    -fx-background-color: linear-gradient(to bottom, #1e2a4a, #16213e);
+    -fx-text-fill: #c0c0d0;
+    -fx-border-color: #0f3460;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-font-family: "Segoe UI", "Consolas", sans-serif;
+    -fx-font-size: 11px;
+    -fx-padding: 5 12;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, #00000030, 2, 0, 0, 1);
+}
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom, #2a3a6a, #1e2a4a);
+    -fx-border-color: #e94560;
+    -fx-effect: dropshadow(gaussian, #e9456040, 6, 0, 0, 0);
+}
+.button:pressed {
+    -fx-background-color: linear-gradient(to bottom, #0f1a30, #0a0f20);
+}
+.button:disabled {
+    -fx-text-fill: #333350;
+    -fx-border-color: #1a1a30;
+    -fx-background-color: #0f0f1a;
+    -fx-effect: none;
+}
+
+/* Danger buttons (attack, new game) */
+.btn-danger {
+    -fx-background-color: linear-gradient(to bottom, #5c1010, #3a0808);
+    -fx-border-color: #8b2020;
+    -fx-text-fill: #ff8888;
+}
+.btn-danger:hover {
+    -fx-background-color: linear-gradient(to bottom, #8b2020, #5c1010);
+    -fx-border-color: #cc3030;
+    -fx-text-fill: #ffaaaa;
+}
+
+/* Primary buttons (open, load) */
+.btn-primary {
+    -fx-background-color: linear-gradient(to bottom, #0f3460, #0a2040);
+    -fx-border-color: #1a5fb4;
+}
+.btn-primary:hover {
+    -fx-background-color: linear-gradient(to bottom, #1a5fb4, #0f3460);
+    -fx-border-color: #3080dd;
+}
+
+/* Success buttons (finalizar turno) */
+.btn-success {
+    -fx-background-color: linear-gradient(to bottom, #1b4332, #0f2a1e);
+    -fx-border-color: #2d6a4f;
+}
+.btn-success:hover {
+    -fx-background-color: linear-gradient(to bottom, #2d6a4f, #1b4332);
+    -fx-border-color: #409070;
+}
+
+/* Direction pad */
+.btn-dir {
+    -fx-font-size: 13px;
+    -fx-padding: 4 8;
+    -fx-min-width: 38;
+    -fx-min-height: 30;
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(to bottom, #1a1a3a, #12122a);
+    -fx-border-color: #2a2a5a;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+}
+.btn-dir:hover {
+    -fx-background-color: linear-gradient(to bottom, #2a2a5a, #1a1a3a);
+    -fx-border-color: #4a4a8a;
+}
+
+/* Labels */
+.label {
+    -fx-text-fill: #c0c0d0;
+    -fx-font-size: 12px;
+}
+.stat-label {
+    -fx-text-fill: #8888a0;
+    -fx-font-size: 11px;
+    -fx-font-family: "Consolas", monospace;
+}
+.stat-hp     { -fx-text-fill: #ff6b6b; }
+.stat-atk    { -fx-text-fill: #ffb86c; }
+.stat-def    { -fx-text-fill: #6ac9ff; }
+.stat-move   { -fx-text-fill: #b0ffb0; }
+.stat-room   { -fx-text-fill: #c8a0ff; }
+.stat-position { -fx-text-fill: #80d0ff; }
+.stat-turn   { -fx-text-fill: #ffd700; }
+
+/* HP ProgressBar */
+.progress-bar {
+    -fx-background-color: #0a0d14;
+    -fx-background-radius: 3;
+    -fx-border-color: #0f3460;
+    -fx-border-radius: 3;
+    -fx-border-width: 1;
+}
+.progress-bar .bar {
+    -fx-background-radius: 2;
+    -fx-background-insets: 1;
+}
+.progress-bar .track {
+    -fx-background-radius: 3;
+    -fx-background-color: #0a0d14;
+}
+
+/* TextArea (log) */
+.text-area {
+    -fx-background-color: #0d1117;
+    -fx-text-fill: #c0c0d0;
+    -fx-font-family: "Consolas", monospace;
+    -fx-font-size: 11px;
+    -fx-border-color: #0f3460;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+}
+.text-area .content {
+    -fx-background-color: #0d1117;
+    -fx-padding: 3;
+}
+.text-area .scroll-pane {
+    -fx-background: #0d1117;
+}
+
+/* Legend */
+.legend-box {
+    -fx-background-color: rgba(22, 33, 62, 0.85);
+    -fx-border-color: #0f3460;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 6 10;
+    -fx-spacing: 6;
+    -fx-effect: dropshadow(gaussian, #00000040, 3, 0, 0, 1);
+}
+
+/* Separator */
+.separator-line {
+    -fx-background-color: #0f3460;
+    -fx-min-height: 1;
+    -fx-max-height: 1;
+}
+
+/* Tooltip */
+.tooltip {
+    -fx-background-color: #0d1117;
+    -fx-text-fill: #e0e0e0;
+    -fx-font-family: "Consolas", monospace;
+    -fx-font-size: 11px;
+    -fx-border-color: #0f3460;
+    -fx-border-width: 1;
+    -fx-padding: 4 8;
+}

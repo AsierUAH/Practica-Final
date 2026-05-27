@@ -17,7 +17,7 @@ Antes de hacer cualquier cambio, todo agente debe leer:
 
 Estos documentos son la referencia principal del proyecto.
 
-Si aparece una duda sobre requisitos, restricciones o entregables, el agente debe consultar tambien el enunciado original `Practica Final 2026 MP EEDD.pdf` o el archivo equivalente que este en la carpeta del proyecto.
+Si aparece una duda sobre requisitos, restricciones o entregables, el agente debe consultar tambien el enunciado original en `docs/enunciado/Práctica Final 2026 MP EEDD.pdf` o el archivo equivalente que este en la carpeta del proyecto.
 
 ## Asignaturas implicadas
 
@@ -98,9 +98,7 @@ Si aparece una duda funcional importante, parar y preguntar antes de inventar un
 
 ## Comandos para compilar, ejecutar y probar
 
-El proyecto Java todavia no esta creado. Cuando se cree, deben documentarse aqui los comandos reales.
-
-### Si se usa Maven
+### Maven (herramienta elegida)
 
 Compilar:
 
@@ -114,7 +112,7 @@ Ejecutar pruebas:
 mvn test
 ```
 
-Ejecutar aplicacion JavaFX, si se configura `javafx:run`:
+Ejecutar aplicacion JavaFX:
 
 ```bash
 mvn javafx:run
@@ -126,29 +124,11 @@ Generar paquete:
 mvn package
 ```
 
-### Si se usa Gradle
-
-Compilar:
+Limpiar y compilar:
 
 ```bash
-gradle build
+mvn clean compile
 ```
-
-Ejecutar pruebas:
-
-```bash
-gradle test
-```
-
-Ejecutar aplicacion:
-
-```bash
-gradle run
-```
-
-### Obligacion de actualizar esta seccion
-
-Cuando se cree el proyecto real, el agente debe sustituir estos comandos genericos por los comandos exactos del repositorio.
 
 ## Estructura de carpetas recomendada
 

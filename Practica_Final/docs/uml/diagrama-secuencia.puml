@@ -1,0 +1,59 @@
+@startuml
+!theme plain
+skinparam defaultTextAlignment center
+actor Jugador
+participant ControladorJuego
+participant GestorTurnos
+participant MotorMovimiento
+participant GestorPersistencia
+participant Partida
+participant Habitacion
+
+== Iniciar partida ==
+Jugador -> ControladorJuego: cargarConfiguracion(ruta)
+ControladorJuego -> GestorPersistencia: cargarConfiguracion(ruta)
+GestorPersistencia --> ControladorJuego: ConfiguracionDTO
+ControladorJuego -> GestorPersistencia: crearHabitacionesDesdeConfig(config)
+ControladorJuego -> GestorPersistencia: crearPartidaDesdeConfig(config)
+ControladorJuego -> GestorPersistencia: crearObjetosDesdeConfig(config)
+ControladorJuego -> Partida: setHabitaciones(habs)
+ControladorJuego -> Partida: setObjetosEnTablero(objs)
+ControladorJuego -> ControladorJuego: iniciarTurnos()
+ControladorJuego -> GestorTurnos: iniciarRonda()
+ControladorJuego -> ControladorJuego: actualizarPaneles()
+
+== Movimiento ==
+Jugador -> ControladorJuego: mover(Direccion)
+ControladorJuego -> MotorMovimiento: esMovimientoValido(hab, f, c, destF, destC)
+MotorMovimiento --> ControladorJuego: true
+ControladorJuego -> Partida: getJugador()
+ControladorJuego -> Jugador: setPosicion(destF, destC)
+ControladorJuego -> Habitacion: setCelda(...)
+ControladorJuego -> MotorMovimiento: casillasAlcanzables(hab, f, c, pasos)
+alt si es PUERTA
+  ControladorJuego -> ControladorJuego: cambiarHabitacion()
+  ControladorJuego -> GestorTurnos: iniciarRonda()
+else si es SALIDA
+  ControladorJuego -> Partida: setEstado(VICTORIA)
+end
+
+== Turno enemigo ==
+ControladorJuego -> GestorTurnos: siguienteTurno()
+GestorTurnos --> ControladorJuego: Enemigo
+ControladorJuego -> Enemigo: getFila(), getColumna()
+ControladorJuego -> ControladorJuego: ejecutarTurnoEnemigo()
+alt enemigo adyacente
+  ControladorJuego -> Jugador: setVida(vida - dano)
+  ControladorJuego -> Partida: agregarEvento()
+else enemigo no adyacente
+  ControladorJuego -> Enemigo: setFila(nf), setColumna(nc)
+  ControladorJuego -> Habitacion: setCelda(...)
+end
+
+== Guardar partida ==
+Jugador -> ControladorJuego: guardarPartida(ruta)
+ControladorJuego -> Partida: setHabitaciones(habitaciones)
+ControladorJuego -> Partida: setObjetosEnTablero(objetosEnTablero)
+ControladorJuego -> GestorPersistencia: guardarPartida(partida, ruta)
+
+@enduml

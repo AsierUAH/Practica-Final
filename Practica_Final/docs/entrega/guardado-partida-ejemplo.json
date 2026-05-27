@@ -1,0 +1,295 @@
+{
+  "habitacionActual": "sala_central",
+  "jugador": {
+    "nombre": "Jugador",
+    "vida": 100,
+    "vidaMaxima": 100,
+    "ataque": 10,
+    "defensa": 5,
+    "movimiento": 3,
+    "fila": 1,
+    "columna": 3,
+    "inventario": []
+  },
+  "enemigos": [
+    {
+      "nombre": "Goblin",
+      "vida": 0,
+      "ataque": 8,
+      "defensa": 2,
+      "fila": 2,
+      "columna": 2,
+      "vivo": false,
+      "habitacionId": "sala_central"
+    }
+  ],
+  "estado": "EN_CURSO",
+  "turnosRestantes": 40,
+  "turnosMaximos": 50,
+  "eventos": [
+    "Distancia a puerta/salida: 2 | Habitaciones hasta salida: 1",
+    "Partida iniciada en sala_central",
+    "Recogido Pocion de vida",
+    "Goblin se movio a (2,2)",
+    "Jugador ataca a Goblin (13 de dano)",
+    "Goblin ataca al jugador (3 de dano)",
+    "Jugador ataca a Goblin (4 de dano)",
+    "Goblin ataca al jugador (3 de dano)",
+    "Jugador ataca a Goblin (17 de dano)",
+    "Goblin ha sido derrotado",
+    "Jugador se movio a (2,2)",
+    "Usada Pocion de vida (cura +30)",
+    "Jugador se movio a (1,2)",
+    "Jugador se movio a (1,3)",
+    "Jugador se movio a (2,3)",
+    "Jugador se movio a (1,3)"
+  ],
+  "grafoHabitaciones": {
+    "vertices": [
+      "sala_central",
+      "pasillo_norte"
+    ],
+    "aristas": [
+      [
+        "sala_central",
+        "pasillo_norte"
+      ]
+    ]
+  },
+  "caminoComprado": [],
+  "caminoVisible": false,
+  "distanciaMinimaPasos": 2,
+  "habitacionesHastaSalida": 1,
+  "habitaciones": [
+    {
+      "id": "sala_central",
+      "filas": 5,
+      "columnas": 5,
+      "celdas": [
+        {
+          "fila": 0,
+          "columna": 0,
+          "tipo": "MURO",
+          "ocupada": true
+        },
+        {
+          "fila": 0,
+          "columna": 1,
+          "tipo": "MURO",
+          "ocupada": true
+        },
+        {
+          "fila": 0,
+          "columna": 2,
+          "tipo": "MURO",
+          "ocupada": true
+        },
+        {
+          "fila": 0,
+          "columna": 3,
+          "tipo": "MURO",
+          "ocupada": true
+        },
+        {
+          "fila": 0,
+          "columna": 4,
+          "tipo": "MURO",
+          "ocupada": true
+        },
+        {
+          "fila": 1,
+          "columna": 0,
+          "tipo": "MURO",
+          "ocupada": true
+        },
+        {
+          "fila": 1,
+          "columna": 1,
+          "tipo": "VACIA",
+          "ocupada": false
+        },
+        {
+          "fila": 1,
+          "columna": 2,
+          "tipo": "VACIA",
+          "ocupada": false
+        },
+        {
+          "fila": 1,
+          "columna": 3,
+          "tipo": "OBJETO",
+          "ocupada": true
+        },
+        {
+          "fila": 1,
+          "columna": 4,
+          "tipo": "MURO",
+          "ocupada": true
+        },
+        {
+          "fila": 2,
+          "columna": 0,
+          "tipo": "MURO",
+          "ocupada": true
+        },
+        {
+          "fila": 2,
+          "columna": 1,
+          "tipo": "VACIA",
+          "ocupada": false
+        },
+        {
+          "fila": 2,
+          "columna": 2,
+          "tipo": "VACIA",
+          "ocupada": false
+        },
+        {
+          "fila": 2,
+          "columna": 3,
+          "tipo": "ENEMIGO",
+          "ocupada": false
+        },
+        {
+          "fila": 2,
+          "columna": 4,
+          "tipo": "MURO",
+          "ocupada": true
+        },
+        {
+          "fila": 3,
+          "columna": 0,
+          "tipo": "MURO",
+          "ocupada": true
+        },
+        {
+          "fila": 3,
+          "columna": 1,
+          "tipo": "VACIA",
+          "ocupada": false
+        },
+        {
+          "fila": 3,
+          "columna": 2,
+          "tipo": "PUERTA",
+          "ocupada": false
+        },
+        {
+          "fila": 3,
+          "columna": 3,
+          "tipo": "VACIA",
+          "ocupada": false
+        },
+        {
+          "fila": 3,
+          "columna": 4,
+          "tipo": "MURO",
+          "ocupada": true
+        },
+        {
+          "fila": 4,
+          "columna": 0,
+          "tipo": "MURO",
+          "ocupada": true
+        },
+        {
+          "fila": 4,
+          "columna": 1,
+          "tipo": "MURO",
+          "ocupada": true
+        },
+        {
+          "fila": 4,
+          "columna": 2,
+          "tipo": "MURO",
+          "ocupada": true
+        },
+        {
+          "fila": 4,
+          "columna": 3,
+          "tipo": "MURO",
+          "ocupada": true
+        },
+        {
+          "fila": 4,
+          "columna": 4,
+          "tipo": "MURO",
+          "ocupada": true
+        }
+      ]
+    },
+    {
+      "id": "pasillo_norte",
+      "filas": 3,
+      "columnas": 3,
+      "celdas": [
+        {
+          "fila": 0,
+          "columna": 0,
+          "tipo": "MURO",
+          "ocupada": true
+        },
+        {
+          "fila": 0,
+          "columna": 1,
+          "tipo": "MURO",
+          "ocupada": true
+        },
+        {
+          "fila": 0,
+          "columna": 2,
+          "tipo": "MURO",
+          "ocupada": true
+        },
+        {
+          "fila": 1,
+          "columna": 0,
+          "tipo": "MURO",
+          "ocupada": true
+        },
+        {
+          "fila": 1,
+          "columna": 1,
+          "tipo": "VACIA",
+          "ocupada": false
+        },
+        {
+          "fila": 1,
+          "columna": 2,
+          "tipo": "SALIDA",
+          "ocupada": false
+        },
+        {
+          "fila": 2,
+          "columna": 0,
+          "tipo": "MURO",
+          "ocupada": true
+        },
+        {
+          "fila": 2,
+          "columna": 1,
+          "tipo": "MURO",
+          "ocupada": true
+        },
+        {
+          "fila": 2,
+          "columna": 2,
+          "tipo": "MURO",
+          "ocupada": true
+        }
+      ]
+    }
+  ],
+  "objetosEnTablero": [
+    {
+      "nombre": "Espada de hierro",
+      "tipo": "ARMA",
+      "ataque": 5,
+      "defensa": 0,
+      "curacion": 0,
+      "habitacionId": "sala_central",
+      "fila": 1,
+      "columna": 3
+    }
+  ]
+}

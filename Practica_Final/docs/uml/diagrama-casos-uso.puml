@@ -1,0 +1,41 @@
+@startuml
+left to right direction
+actor Jugador
+
+rectangle "Juego por Turnos" {
+  usecase "Iniciar partida" as UC1
+  usecase "Moverse dentro de habitacion" as UC2
+  usecase "Atacar enemigo" as UC3
+  usecase "Recoger objeto" as UC4
+  usecase "Usar objeto" as UC5
+  usecase "Equipar objeto" as UC6
+  usecase "Abrir puerta" as UC7
+  usecase "Cambiar de habitacion" as UC8
+  usecase "Comprar camino minimo" as UC9
+  usecase "Guardar partida" as UC10
+  usecase "Cargar partida" as UC11
+  usecase "Ver estado del jugador" as UC12
+  usecase "Ver inventario" as UC13
+  usecase "Ver distancia minima" as UC14
+}
+
+Jugador --> UC1
+Jugador --> UC2
+Jugador --> UC3
+Jugador --> UC4
+Jugador --> UC5
+Jugador --> UC6
+Jugador --> UC7
+Jugador --> UC8
+Jugador --> UC9
+Jugador --> UC10
+Jugador --> UC11
+Jugador --> UC12
+Jugador --> UC13
+Jugador --> UC14
+
+UC8 .> UC7 : <<extend>>
+UC2 .> UC6 : <<include>>
+UC5 .> UC3 : <<include>>
+
+@enduml

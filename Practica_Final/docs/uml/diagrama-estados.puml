@@ -1,0 +1,27 @@
+@startuml
+[*] --> EN_CURSO : Cargar configuracion
+
+EN_CURSO --> EN_CURSO : Turno jugador
+EN_CURSO --> EN_CURSO : Turno enemigos
+EN_CURSO --> EN_CURSO : Cambiar habitacion
+
+EN_CURSO --> VICTORIA : Alcanzar salida
+EN_CURSO --> DERROTA : Vida = 0
+EN_CURSO --> DERROTA : Turnos = 0
+
+VICTORIA --> [*]
+DERROTA --> [*]
+
+state EN_CURSO {
+  [*] --> EsperandoMovimiento
+  EsperandoMovimiento --> EsperandoAccion : Mover
+  EsperandoMovimiento --> EsperandoAccion : Atacar
+  EsperandoMovimiento --> EsperandoAccion : Recoger objeto
+  EsperandoMovimiento --> EsperandoAccion : Usar objeto
+  EsperandoMovimiento --> EsperandoAccion : Abrir puerta
+  EsperandoAccion --> TurnoEnemigos : Movimiento + Accion realizados
+  EsperandoAccion --> EsperandoMovimiento : Solo accion (sin mover)
+  TurnoEnemigos --> [*] : Ronda completa
+}
+
+@enduml

@@ -1,0 +1,67 @@
+BOCETO DE INTERFAZ - Juego por Turnos
+========================================
+
++------------------------------------------------------------------+
+|  [BORDERPANE - 900x650]                                           |
+|                                                                   |
+|  +----------------------------+  +-----------------------------+  |
+|  |       PANEL MATRIZ         |  |      PANEL ESTADO           |  |
+|  |   (GridPane, centro)       |  |   (VBox, derecha)           |  |
+|  |                            |  |                             |  |
+|  |  [MURO] [MURO] [MURO] ... |  | ESTADO DEL JUGADOR           |  |
+|  |  [MURO] [JUG.] [POC.] ... |  | Nombre: Jugador              |  |
+|  |  [MURO] [VACIA] [GOB.]    |  | Vida: 85/100                 |  |
+|  |  [MURO] [VACIA] [PUERTA]  |  | Ataque: 10 (+5 eq)           |  |
+|  |  [MURO] [MURO] [MURO] ... |  | Defensa: 5                   |  |
+|  |                            |  | Movimiento: 3               |  |
+|  |  Leyenda de colores:       |  | Habitación: sala_central    |  |
+|  |  Cyan = Jugador            |  | Turnos: 48/50               |  |
+|  |  Rojo = Enemigo            |  | Distancia salida: 2 pasos   |  |
+|  |  Dorado = Objeto           |  | Estado: EN_CURSO            |  |
+|  |  Azul = Puerta             |  |                             |  |
+|  |  Verde = Salida            |  +-----------------------------+  |
+|  |  Gris oscuro = Muro        |  +-----------------------------+  |
+|  |  Gris claro = Vacía        |  |     PANEL INVENTARIO        |  |
+|  |  Verde claro = Alcanzable  |  |   (ScrollPane, derecha)     |  |
+|  |  Purpura = Camino comprado |  |                             |  |
+|  |                            |  | INVENTARIO                  |  |
+|  |                            |  | [EQ] Espada de hierro       |  |
+|  |                            |  |   (ATK+5)                   |  |
+|  |                            |  | - Poción de vida (POCIÓN)   |  |
+|  |                            |  |   CUR+30                    |  |
+|  |                            |  |                             |  |
+|  |                            |  +-----------------------------+  |
+|  |                            |  +-----------------------------+  |
+|  |                            |  |      PANEL ACCIONES         |  |
+|  |                            |  |   (VBox, derecha)           |  |
+|  |                            |  |                             |  |
+|  |                            |  | ACCIONES                    |  |
+|  |                            |  | [Mover ARRIBA]              |  |
+|  |                            |  | [Mover ABAJO]               |  |
+|  |                            |  | [Mover IZQUIERDA]           |  |
+|  |                            |  | [Mover DERECHA]             |  |
+|  |                            |  | [Atacar]                    |  |
+|  |                            |  | [Recoger objeto]            |  |
+|  |                            |  | [Usar objeto]               |  |
+|  |                            |  | [Abrir puerta]              |  |
+|  |                            |  | [Comprar camino (-3 turnos)]|  |
+|  |                            |  | [Guardar partida]           |  |
+|  |                            |  |                             |  |
+|  +----------------------------+  +-----------------------------+  |
+|                                                                   |
+|  +------------------------------------------------------------+   |
+|  |        PANEL LOG (abajo)                                    |  |
+|  |  REGISTRO DE EVENTOS                                        |  |
+|  |  > Partida iniciada en sala_central                         |  |
+|  |  > Jugador se movió a (2,2)                                 |  |
+|  |  > Jugador ataca a Goblin (15 de dano)                      |  |
+|  |  > Distancia a puerta/salida: 2 | Habitaciones hasta salida:|  |
+|  |    1                                                       |   |
+|  +------------------------------------------------------------+   |
++------------------------------------------------------------------+
+
+FLUJO DE PANTALLAS:
+1. Al iniciar: se carga config-ejemplo.json y se muestra la matriz
+2. Durante la partida: el jugador hace clic en botones de accion
+3. Al ganar/perder: diálogo modal muestra el log completo
+4. El boton Guardar persiste el estado actual a JSON

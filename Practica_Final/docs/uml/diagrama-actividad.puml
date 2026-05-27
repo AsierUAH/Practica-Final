@@ -1,0 +1,65 @@
+@startuml
+start
+:Iniciar ronda;
+:Turno del jugador;
+while (Quedan acciones?) is (Si)
+  if (Quiere moverse?) then (Si)
+    :Elige direccion;
+    if (Movimiento valido?) then (Si)
+      if (Destino alcanzable?) then (Si)
+        :Mueve al jugador;
+        if (Es PUERTA?) then (Si)
+          :Cambia de habitacion;
+          :Finaliza turno;
+          break
+        elseif (Es SALIDA?) then (Si)
+          :Estado = VICTORIA;
+          stop
+        endif
+      else (No)
+        :Mensaje: fuera de alcance;
+      endif
+    else (No)
+      :Mensaje: movimiento no valido;
+    endif
+  endif
+  
+  if (Quiere actuar?) then (Si)
+    if (Atacar?) then (Si)
+      :Calcula dano con formula;
+      :Resta vida al enemigo;
+    elseif (Recoger?) then (Si)
+      :Anade objeto al inventario;
+      :Elimina del tablero;
+    elseif (Usar objeto?) then (Si)
+      :Aplica efecto (curacion/equipar);
+    elseif (Abrir puerta?) then (Si)
+      :Cambia de habitacion;
+      :Finaliza turno;
+      break
+    endif
+  endif
+  :haActuado = true;
+endwhile (No)
+:Turno de enemigos;
+while (Quedan enemigos?) is (Si)
+  :Siguiente enemigo;
+  if (Enemigo adyacente?) then (Si)
+    :Ataca al jugador;
+    if (Jugador muerto?) then (Si)
+      :Estado = DERROTA;
+      stop
+    endif
+  else (No)
+    :Se mueve hacia el jugador;
+  endif
+endwhile (No)
+:Iniciar siguiente ronda;
+:Consumir turno;
+if (Turnos restantes = 0?) then (Si)
+  :Estado = DERROTA;
+  stop
+else (No)
+  -[#blue]->;
+endif
+@enduml

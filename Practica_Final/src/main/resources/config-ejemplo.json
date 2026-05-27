@@ -1,0 +1,107 @@
+{
+  "habitaciones": [
+    {
+      "id": "sala_central",
+      "filas": 5,
+      "columnas": 5,
+      "celdas": [
+        { "fila": 0, "columna": 0, "tipo": "MURO" },
+        { "fila": 0, "columna": 1, "tipo": "MURO" },
+        { "fila": 0, "columna": 2, "tipo": "MURO" },
+        { "fila": 0, "columna": 3, "tipo": "MURO" },
+        { "fila": 0, "columna": 4, "tipo": "MURO" },
+        { "fila": 1, "columna": 0, "tipo": "MURO" },
+        { "fila": 1, "columna": 1, "tipo": "VACIA" },
+        { "fila": 1, "columna": 2, "tipo": "VACIA" },
+        { "fila": 1, "columna": 3, "tipo": "OBJETO" },
+        { "fila": 1, "columna": 4, "tipo": "MURO" },
+        { "fila": 2, "columna": 0, "tipo": "MURO" },
+        { "fila": 2, "columna": 1, "tipo": "VACIA" },
+        { "fila": 2, "columna": 2, "tipo": "VACIA" },
+        { "fila": 2, "columna": 3, "tipo": "ENEMIGO" },
+        { "fila": 2, "columna": 4, "tipo": "MURO" },
+        { "fila": 3, "columna": 0, "tipo": "MURO" },
+        { "fila": 3, "columna": 1, "tipo": "VACIA" },
+        { "fila": 3, "columna": 2, "tipo": "PUERTA" },
+        { "fila": 3, "columna": 3, "tipo": "VACIA" },
+        { "fila": 3, "columna": 4, "tipo": "MURO" },
+        { "fila": 4, "columna": 0, "tipo": "MURO" },
+        { "fila": 4, "columna": 1, "tipo": "MURO" },
+        { "fila": 4, "columna": 2, "tipo": "MURO" },
+        { "fila": 4, "columna": 3, "tipo": "MURO" },
+        { "fila": 4, "columna": 4, "tipo": "MURO" }
+      ],
+      "conexiones": ["pasillo_norte"]
+    },
+    {
+      "id": "pasillo_norte",
+      "filas": 3,
+      "columnas": 3,
+      "celdas": [
+        { "fila": 0, "columna": 0, "tipo": "MURO" },
+        { "fila": 0, "columna": 1, "tipo": "MURO" },
+        { "fila": 0, "columna": 2, "tipo": "MURO" },
+        { "fila": 1, "columna": 0, "tipo": "MURO" },
+        { "fila": 1, "columna": 1, "tipo": "VACIA" },
+        { "fila": 1, "columna": 2, "tipo": "SALIDA" },
+        { "fila": 2, "columna": 0, "tipo": "MURO" },
+        { "fila": 2, "columna": 1, "tipo": "MURO" },
+        { "fila": 2, "columna": 2, "tipo": "MURO" }
+      ],
+      "conexiones": ["sala_central"]
+    }
+  ],
+  "jugador": {
+    "habitacionInicial": "sala_central",
+    "fila": 2,
+    "columna": 1,
+    "vida": 100,
+    "ataque": 10,
+    "defensa": 5,
+    "movimiento": 3
+  },
+  "turnosMaximos": 50,
+  "enemigos": [
+    {
+      "nombre": "Goblin",
+      "habitacionId": "sala_central",
+      "fila": 2,
+      "columna": 3,
+      "vida": 25,
+      "ataque": 8,
+      "defensa": 2
+    }
+  ],
+  "objetos": [
+    {
+      "nombre": "Espada de hierro",
+      "tipo": "ARMA",
+      "habitacionId": "sala_central",
+      "fila": 1,
+      "columna": 3,
+      "ataque": 5,
+      "defensa": 0,
+      "curacion": 0
+    },
+    {
+      "nombre": "Pocion de vida",
+      "tipo": "POCION",
+      "habitacionId": "sala_central",
+      "fila": 1,
+      "columna": 1,
+      "ataque": 0,
+      "defensa": 0,
+      "curacion": 30
+    }
+  ],
+  "puertas": [
+    {
+      "habitacionOrigen": "sala_central",
+      "fila": 3,
+      "columna": 2,
+      "habitacionDestino": "pasillo_norte",
+      "filaEntrada": 1,
+      "columnaEntrada": 1
+    }
+  ]
+}

@@ -1,0 +1,161 @@
+@startuml
+!theme plain
+skinparam packageStyle rectangle
+skinparam defaultTextAlignment center
+
+package "app" {
+  class App
+}
+
+package "ui" {
+  class VistaPrincipal
+  class PanelMatriz
+  class PanelEstado
+  class PanelInventario
+  class PanelAcciones
+  class PanelLog
+  class ControladorJuego
+}
+
+package "logic" {
+  interface Turnable {
+    + tomarTurno()
+    + estaVivo(): boolean
+  }
+  class GestorTurnos {
+    - colaTurnos: Cola<Turnable>
+    - enemigos: Cola<Turnable>
+    + agregarEnemigo(Turnable)
+    + iniciarRonda()
+    + siguienteTurno(): Turnable
+    + rondaTerminada(): boolean
+  }
+  class MotorMovimiento {
+    + esMovimientoValido(Habitacion, int, int, int, int): boolean
+    + casillasAlcanzables(Habitacion, int, int, int): ListaEnlazada<int[]>
+    + distanciaMinimaATipo(Habitacion, int, int, TipoCelda): int
+  }
+}
+
+package "model" {
+  class Jugador implements Turnable {
+    - nombre: String
+    - vida: int
+    - ataque: int
+    - defensa: int
+    - movimiento: int
+    - inventario: ListaEnlazada<Objeto>
+    - armaEquipada: Objeto
+    - escudoEquipado: Objeto
+  }
+  class Enemigo implements Turnable {
+    - nombre: String
+    - vida: int
+    - ataque: int
+    - defensa: int
+    - vivo: boolean
+    - habitacionId: String
+  }
+  class Partida {
+    - habitacionActual: String
+    - jugador: Jugador
+    - enemigos: ListaEnlazada<Enemigo>
+    - estado: EstadoPartida
+    - turnosRestantes: int
+    - eventos: ListaEnlazada<String>
+    - grafoHabitaciones: Grafo<String>
+    - habitaciones: ListaEnlazada<Habitacion>
+    - objetosEnTablero: ListaEnlazada<Objeto>
+  }
+  class Habitacion {
+    - cuadricula: Matriz<Celda>
+    - id: String
+  }
+  class Celda {
+    - tipo: TipoCelda
+    - ocupada: boolean
+  }
+  class Objeto {
+    - nombre: String
+    - tipo: TipoObjeto
+    - ataque: int
+    - defensa: int
+    - curacion: int
+  }
+  enum Direccion
+  enum TipoCelda {
+    VACIA
+    MURO
+    ENEMIGO
+    OBJETO
+    TRAMPA
+    PUERTA
+    SALIDA
+  }
+  enum TipoObjeto {
+    ARMA
+    POCION
+    ESCUDO
+    LLAVE
+  }
+  enum EstadoPartida {
+    EN_CURSO
+    VICTORIA
+    DERROTA
+  }
+}
+
+package "structures" {
+  class Cola<T>
+  class Pila<T>
+  class ListaEnlazada<T>
+  class ListaCircular<T>
+  class Matriz<T>
+  class Arbol<T>
+  class Grafo<T>
+}
+
+package "persistence" {
+  class GestorPersistencia
+  class ConfiguracionDTO
+}
+
+package "exceptions" {
+  class JuegoException
+  class MovimientoInvalidoException
+  class ConfiguracionInvalidaException
+  class PartidaTerminadaException
+  class AtaqueInvalidoException
+  class CeldaOcupadaException
+}
+
+package "log" {
+  class GameLog
+}
+
+App --> VistaPrincipal
+VistaPrincipal --> ControladorJuego
+ControladorJuego --> GestorTurnos
+ControladorJuego --> MotorMovimiento
+ControladorJuego --> GestorPersistencia
+ControladorJuego --> Partida
+ControladorJuego --> Habitacion
+GestorTurnos --> Cola
+MotorMovimiento --> Cola
+Cola --> ListaEnlazada
+Pila --> ListaEnlazada
+Grafo --> ListaEnlazada
+Grafo --> Cola
+Grafo --> Pila
+Partida --> Grafo
+Partida --> ListaEnlazada
+Habitacion --> Matriz
+Jugador --> ListaEnlazada
+GestorPersistencia --> Gson
+MovimientoInvalidoException --|> JuegoException
+ConfiguracionInvalidaException --|> JuegoException
+PartidaTerminadaException --|> JuegoException
+AtaqueInvalidoException --|> JuegoException
+CeldaOcupadaException --|> JuegoException
+
+@enduml

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Vista legacy de SceneBuilder. La interfaz activa del juego se construye en practicafinal.ui.VistaPrincipal. -->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="800.0" prefWidth="1250.0"
+             xmlns="http://javafx.com/javafx/17"
+             xmlns:fx="http://javafx.com/fxml/1">
+    <padding>
+        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0"/>
+    </padding>
+
+    <top>
+        <VBox spacing="4.0">
+            <padding>
+                <Insets bottom="4.0" left="4.0" right="4.0" top="4.0"/>
+            </padding>
+            <Label text="LA CONQUISTA — SceneBuilder Edition">
+                <font>
+                    <Font name="Arial" size="18.0"/>
+                </font>
+            </Label>
+            <HBox fx:id="leyendaMapa" spacing="8.0"/>
+            <Label fx:id="lblHabitacionActual" text="(cargando...)">
+                <font>
+                    <Font name="Arial" size="13.0"/>
+                </font>
+            </Label>
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="520.0">
+            <StackPane>
+                <GridPane fx:id="gridMatriz"/>
+            </StackPane>
+        </ScrollPane>
+    </center>
+
+    <right>
+        <VBox spacing="6.0" prefWidth="370.0">
+            <padding>
+                <Insets left="6.0"/>
+            </padding>
+
+            <TitledPane animated="false" expanded="true" text="ESTADO DEL JUGADOR">
+                <VBox spacing="2.0" style="-fx-padding: 6;">
+                    <Label fx:id="lblNombre" text="Nombre: --"/>
+                    <Label fx:id="lblVida" text="Vida: --/--"/>
+                    <Label fx:id="lblAtaque" text="Ataque: --"/>
+                    <Label fx:id="lblDefensa" text="Defensa: --"/>
+                    <Label fx:id="lblMovimiento" text="Movimiento: --"/>
+                    <Label fx:id="lblPosicion" text="Posicion: (-,-)"/>
+                    <Label fx:id="lblTurnos" text="Turnos: --/--"/>
+                    <Label fx:id="lblEstado" text="Estado: --"/>
+                </VBox>
+            </TitledPane>
+
+            <TitledPane animated="false" expanded="true" text="EQUIPAMIENTO">
+                <ScrollPane fitToWidth="true" prefHeight="200.0">
+                    <VBox spacing="4.0" style="-fx-padding: 6;">
+                        <Label style="-fx-font-weight: bold;" text="Brazos (arma)"/>
+                        <HBox spacing="6.0">
+                            <VBox fx:id="slotBrazoIzquierdo" prefWidth="160.0"
+                                  style="-fx-border-color: #888; -fx-border-radius: 4; -fx-padding: 4;"/>
+                            <VBox fx:id="slotBrazoDerecho" prefWidth="160.0"
+                                  style="-fx-border-color: #888; -fx-border-radius: 4; -fx-padding: 4;"/>
+                        </HBox>
+                        <Label style="-fx-font-weight: bold;" text="Manos"/>
+                        <HBox spacing="6.0">
+                            <VBox fx:id="slotManoIzquierda" prefWidth="160.0"
+                                  style="-fx-border-color: #888; -fx-border-radius: 4; -fx-padding: 4;"/>
+                            <VBox fx:id="slotManoDerecha" prefWidth="160.0"
+                                  style="-fx-border-color: #888; -fx-border-radius: 4; -fx-padding: 4;"/>
+                        </HBox>
+                        <Label style="-fx-font-weight: bold;" text="Torso (armadura/escudo)"/>
+                        <VBox fx:id="slotTorso" prefWidth="330.0"
+                              style="-fx-border-color: #888; -fx-border-radius: 4; -fx-padding: 4;"/>
+                        <Label style="-fx-font-weight: bold;" text="Dedos (anillos)"/>
+                        <FlowPane fx:id="slotDedos" hgap="4.0" prefWidth="330.0" vgap="4.0"/>
+                    </VBox>
+                </ScrollPane>
+            </TitledPane>
+
+            <TitledPane animated="false" expanded="true" text="INVENTARIO">
+                <VBox spacing="4.0" style="-fx-padding: 6;">
+                    <ListView fx:id="listaInventario" prefHeight="80.0"/>
+                    <HBox spacing="6.0">
+                        <Button fx:id="btnEquipar" text="Equipar" HBox.hgrow="ALWAYS"/>
+                        <Button fx:id="btnUsar" text="Usar pocion" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                </VBox>
+            </TitledPane>
+
+            <TitledPane animated="false" expanded="false" text="RUTA MINIMA A SALIDA">
+                <VBox spacing="4.0" style="-fx-padding: 6;">
+                    <Label fx:id="lblRuta" text="(no calculada)" wrapText="true"/>
+                    <Button fx:id="btnComprarRuta" text="Comprar camino (-3 turnos)"/>
+                </VBox>
+            </TitledPane>
+
+            <TitledPane animated="false" expanded="true" text="ACCIONES">
+                <ScrollPane fitToWidth="true" prefHeight="150.0">
+                    <VBox fx:id="panelAcciones" spacing="4.0" style="-fx-padding: 4;"/>
+                </ScrollPane>
+            </TitledPane>
+
+            <TitledPane animated="false" expanded="true" text="REGISTRO DE EVENTOS">
+                <TextArea fx:id="areaLog" editable="false" prefHeight="120.0"
+                          style="-fx-font-family: monospace; -fx-font-size: 11px;"/>
+            </TitledPane>
+        </VBox>
+    </right>
+
+</BorderPane>

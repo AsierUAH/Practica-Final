@@ -1,0 +1,117 @@
+{
+  "habitacionActual": "sala_central",
+  "jugador": {
+    "nombre": "Jugador",
+    "vida": 85,
+    "vidaMaxima": 100,
+    "ataque": 10,
+    "defensa": 5,
+    "movimiento": 3,
+    "fila": 2,
+    "columna": 2,
+    "inventario": [
+      {
+        "nombre": "Espada de hierro",
+        "tipo": "ARMA",
+        "ataque": 5,
+        "defensa": 0,
+        "curacion": 0,
+        "habitacionId": null,
+        "fila": 0,
+        "columna": 0
+      }
+    ],
+    "armaEquipada": null,
+    "escudoEquipado": null
+  },
+  "enemigos": [
+    {
+      "nombre": "Goblin",
+      "vida": 25,
+      "ataque": 8,
+      "defensa": 2,
+      "fila": 2,
+      "columna": 3,
+      "vivo": true,
+      "habitacionId": "sala_central"
+    }
+  ],
+  "estado": "EN_CURSO",
+  "turnosRestantes": 48,
+  "turnosMaximos": 50,
+  "eventos": [
+    "Partida iniciada en sala_central",
+    "Jugador recogio Espada de hierro",
+    "Jugador ataco a Goblin (15 de dano)"
+  ],
+  "grafoHabitaciones": {
+    "vertices": ["sala_central", "pasillo_norte"],
+    "aristas": [["sala_central", "pasillo_norte"]]
+  },
+  "caminoComprado": [],
+  "caminoVisible": false,
+  "distanciaMinimaPasos": 2,
+  "habitacionesHastaSalida": 1,
+  "habitaciones": [
+    {
+      "id": "sala_central",
+      "filas": 5,
+      "columnas": 5,
+      "celdas": [
+        {"fila": 0, "columna": 0, "tipo": "MURO", "ocupada": true},
+        {"fila": 0, "columna": 1, "tipo": "MURO", "ocupada": true},
+        {"fila": 0, "columna": 2, "tipo": "MURO", "ocupada": true},
+        {"fila": 0, "columna": 3, "tipo": "MURO", "ocupada": true},
+        {"fila": 0, "columna": 4, "tipo": "MURO", "ocupada": true},
+        {"fila": 1, "columna": 0, "tipo": "MURO", "ocupada": true},
+        {"fila": 1, "columna": 1, "tipo": "VACIA", "ocupada": false},
+        {"fila": 1, "columna": 2, "tipo": "VACIA", "ocupada": false},
+        {"fila": 1, "columna": 3, "tipo": "VACIA", "ocupada": false},
+        {"fila": 1, "columna": 4, "tipo": "MURO", "ocupada": true},
+        {"fila": 2, "columna": 0, "tipo": "MURO", "ocupada": true},
+        {"fila": 2, "columna": 1, "tipo": "VACIA", "ocupada": false},
+        {"fila": 2, "columna": 2, "tipo": "VACIA", "ocupada": true},
+        {"fila": 2, "columna": 3, "tipo": "ENEMIGO", "ocupada": true},
+        {"fila": 2, "columna": 4, "tipo": "MURO", "ocupada": true},
+        {"fila": 3, "columna": 0, "tipo": "MURO", "ocupada": true},
+        {"fila": 3, "columna": 1, "tipo": "VACIA", "ocupada": false},
+        {"fila": 3, "columna": 2, "tipo": "PUERTA", "ocupada": false},
+        {"fila": 3, "columna": 3, "tipo": "VACIA", "ocupada": false},
+        {"fila": 3, "columna": 4, "tipo": "MURO", "ocupada": true},
+        {"fila": 4, "columna": 0, "tipo": "MURO", "ocupada": true},
+        {"fila": 4, "columna": 1, "tipo": "MURO", "ocupada": true},
+        {"fila": 4, "columna": 2, "tipo": "MURO", "ocupada": true},
+        {"fila": 4, "columna": 3, "tipo": "MURO", "ocupada": true},
+        {"fila": 4, "columna": 4, "tipo": "MURO", "ocupada": true}
+      ]
+    },
+    {
+      "id": "pasillo_norte",
+      "filas": 3,
+      "columnas": 3,
+      "celdas": [
+        {"fila": 0, "columna": 0, "tipo": "MURO", "ocupada": true},
+        {"fila": 0, "columna": 1, "tipo": "MURO", "ocupada": true},
+        {"fila": 0, "columna": 2, "tipo": "MURO", "ocupada": true},
+        {"fila": 1, "columna": 0, "tipo": "MURO", "ocupada": true},
+        {"fila": 1, "columna": 1, "tipo": "VACIA", "ocupada": false},
+        {"fila": 1, "columna": 2, "tipo": "SALIDA", "ocupada": false},
+        {"fila": 2, "columna": 0, "tipo": "MURO", "ocupada": true},
+        {"fila": 2, "columna": 1, "tipo": "MURO", "ocupada": true},
+        {"fila": 2, "columna": 2, "tipo": "MURO", "ocupada": true}
+      ]
+    }
+  ],
+  "objetosEnTablero": [
+    {
+      "nombre": "Pocion de vida",
+      "tipo": "POCION",
+      "habitacionId": "sala_central",
+      "fila": 1,
+      "columna": 1,
+      "ataque": 0,
+      "defensa": 0,
+      "curacion": 30
+    }
+  ]
+}
